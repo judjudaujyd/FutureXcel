@@ -1,6 +1,6 @@
 The following task has been compleated by Dark_Knight for the FuttureXcel Internship Program .
 
-The following app is made using using MERN STACK .For Frontend react was used via vite and For the Backend exppress was used to host a local Server and mongoose was used to Retrive Data And Send Data To The Database ( MongoDB ).
+The following app is made using using MERN STACK .For Frontend react was used via vite and For the Backend exppress was used to host a local Server and mongoose was used to Retrive Data And Send Data To The Database ( MongoDB ).The .env File was uploaded for reviewing in the backend section of the code.
 
 github : https://github.com/judjudaujyd/FutureXcel/edit/main/WeekOne
 
