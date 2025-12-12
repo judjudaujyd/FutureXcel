@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+:root{
+    --bwhite : #FFFFFF;
+    --background : #FFF3F0;
+    --highlight : #FDE12D;
+    --orange : #F3A783;
+    --grey : #48555E;
+}
+
+.cursive{
+    font-family: "Ballet", cursive!important;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+
