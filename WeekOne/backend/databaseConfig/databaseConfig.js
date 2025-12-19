@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 // ASYNC FUNCTION FOR ESTABLISHING A CONNECTION WITH THE DATABASE
+
 const connectToDB = async (URL) => {
     // Type validation for URL
     if (typeof URL !== "string") {

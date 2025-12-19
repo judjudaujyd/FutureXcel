@@ -130,7 +130,7 @@ function App() {
         </div>
 
       </div>
-
+      <footer className="w-full mt-4 text-center">THIS APP WAS DEVELOPED BY DARK_KNIGHT</footer>
     </div>
   );
 }
