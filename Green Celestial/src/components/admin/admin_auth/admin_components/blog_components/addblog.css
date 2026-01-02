@@ -1,0 +1,55 @@
+.blogCreateSection{
+    width: 100%;
+    height: 90%;
+    float: left;
+    display: grid;
+    place-items: center;
+}
+
+.blogCreateSectionInner{
+    width: 70%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blogCreateSectionInner > h2 {
+    text-align: center;
+    color: transparent;
+    background: url(/forest.jpg);
+    -webkit-background-clip: text;
+    animation: floater 5s linear infinite;
+}
+
+.blogCreateBtns{
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 15px;
+}
+
+.blogCreateBtns > a {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--hard-green);
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: large;
+    color: var(--hard-green);
+    text-align: center;
+    border-radius: 4px;
+}
+
+.blogCreateBtns > a:hover{
+    background-color: var(--s-green);
+    color: whitesmoke;
+}
+
+@media screen and (min-width : 300px) and (max-width : 800px) {
+    .blogCreateBtns{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

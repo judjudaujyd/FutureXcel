@@ -1,0 +1,21 @@
+.adminTraffic{
+    width: 100%;
+    float: left;
+    height: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.deviceAdminTotalTraffic{
+    width: 100%;
+    float: left;
+    height: 300px;
+}
+
+.deviceTypesChart{
+    width: 100%;
+    float: left;
+    height: 300px;
+    display: grid;
+    place-items: center;
+}

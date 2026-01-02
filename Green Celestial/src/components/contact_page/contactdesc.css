@@ -1,0 +1,18 @@
+.contact_desc{
+    width: 100%;
+    float: left;
+    min-height: 400px;
+}
+
+.contact_desc_inner{
+    width: 80%;
+    float: left;
+    height: 350px;
+    margin: 25px 10%;
+    display: grid;
+    place-items: center;
+}
+
+.contact_desc_inner > p {
+    text-align: center;
+}

@@ -1,0 +1,25 @@
+.blogImage {
+  width: 100%;
+  float: left;
+  height: 550px;
+}
+
+.blogImageInner {
+  width: 80%;
+  float: left;
+  height: 500px;
+  margin: 25px 10%;
+  display: grid;
+  place-items: center;
+}
+
+.blogImageInner > img {
+  max-width: 100%;
+  max-height: 500px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  -webkit-box-shadow: 3px 3px 70px -25px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 70px -25px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 70px -25px rgba(0, 0, 0, 0.75);
+}

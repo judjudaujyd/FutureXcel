@@ -1,0 +1,104 @@
+@keyframes bubbles{
+    0%{
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+
+    25%{
+        border-radius: 13% 87% 14% 86% / 63% 17% 83% 37% ;
+    }
+
+    50%{
+        border-radius: 39% 61% 38% 62% / 63% 57% 43% 37% ;
+    }
+
+    75%{
+        border-radius: 25% 75% 56% 44% / 81% 31% 69% 19% ;
+    }
+
+    100%{
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+}
+
+.contact{
+    width: 100%;
+    float: left;
+    height: 500px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.contact_inner{
+    max-width: 1240px;
+    height: 450px;
+    margin: 25px auto;
+}
+
+.contact_left{
+    width: 50%;
+    height: 450px;
+    float: left;
+    display: grid;
+    place-items: center;
+}
+
+.left_inner{
+    width: 90%;
+    height: 400px;
+    display: grid;
+}
+
+.left_inner > b{
+    font-size: 20px;
+    color: var(--hard-green);
+}
+
+.left_inner > iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    border-radius: 8px;
+}
+
+
+.contact_right{
+    width: 50%;
+    height: 450px;
+    float: left;
+    display: grid;
+    place-items: center;
+    align-content: center;
+}
+
+.contact_right > b{
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: small;
+    color: var(--hard-green);
+}
+
+@media screen and (min-width:500px) and (max-width:800px){
+    .left_inner{
+      
+    }
+}
+
+@media screen and (min-width : 300px) and (max-width : 500px){
+
+    .contact{
+        height: 850px;
+    }
+
+    .contact_inner{
+        height: 800px;
+    }
+
+    .contact_left{
+        height: 450px;
+        width: 100%;
+    }
+
+    .contact_right{
+        width: 100%;
+        height: 300px;
+    }
+}

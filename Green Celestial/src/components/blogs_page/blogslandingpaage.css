@@ -1,0 +1,58 @@
+.blogsMainDiv{
+    width: 100%;
+    min-height: auto;
+    float: left;
+}
+
+.blogMainInner{
+    max-width: 1240px;
+    margin: 10px auto;
+    background-color: blanchedalmond;
+}
+
+.blogSearchArea{
+    width: 100%;
+    float: left;
+    min-height: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-column-gap: 5px;
+}
+
+.blogSearchArea > input {
+    width: calc(100% - 10px);
+    height: 40px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 3px 5px;
+    border: 1px solid grey;
+    background: whitesmoke;
+    margin: 0px 5px;
+}
+
+.blogSearchArea > input:focus{
+    border: none;
+    outline: none;
+    outline: 1px solid grey;
+}
+
+.blogSearchArea > button{
+    width: calc(100% - 10px);
+    height: 40px;
+    padding: 3px 5px;
+    background-color: transparent;
+    color: transparent;
+    font-weight: 700;
+    background: url(/forest.jpg);
+    -webkit-background-clip: text;
+    animation: floater 5s linear infinite;
+    border: none;
+    border: 1px solid grey;
+    margin: 0px 5px;
+}
+
+.blogSearchArea > button:hover{
+    opacity: 0.8;
+    font-weight: 800;
+    cursor: pointer;
+}

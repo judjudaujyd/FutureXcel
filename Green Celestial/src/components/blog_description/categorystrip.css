@@ -1,0 +1,38 @@
+.categoryStrip{
+    width: 100%;
+    float: left;
+    height: 40px;
+    margin: 25px 0;
+}
+
+.categoryStripInner{
+    width: 80%;
+    height: 40px;
+    float: left;
+    margin: 0px 10%;
+    background-color: whitesmoke;
+    border-radius: 4px;
+}
+
+.categoryStripInner > b {
+    line-height: 40px;
+    padding: 0px 5px;
+}
+
+.blogTitle{
+    width: 100%;
+    float: left;
+    min-height: 60px;
+    margin: 10px 0px;
+}
+
+.blogTitleInner{
+    width: 80%;
+    float: left;
+    min-height: 60px;
+    margin: 0px 10%;
+}
+
+.blogTitleInner > h2{
+    font-weight: 700;
+}

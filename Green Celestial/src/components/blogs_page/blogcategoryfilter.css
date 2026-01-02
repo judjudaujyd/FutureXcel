@@ -1,0 +1,80 @@
+.blogCategoryFilter{
+    width: 100%;
+    float: left;
+    min-height: auto;
+}
+
+.categoryFilterInner{
+    max-width: 1240px;
+    min-height: auto;
+    margin: 5px auto;
+}
+
+.categoryFilter{
+    width: calc(100% - 10px);
+    float: left;
+    height: 40px;
+}
+
+.funnelIcon{
+    width: calc(10% - 10px);
+    float: left;
+    height: 40px;
+    margin: 0px 5px;
+    display: grid;
+    place-items: center;
+}
+
+.funnelIcon > h4{
+    line-height: 40px;
+    font-weight: 400;
+    font-size: smaller;
+    
+}
+
+.categoryFilter > ul {
+    width: calc(90% - 10px);
+    overflow-x: auto;
+    float: left;
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0px 5px;
+}
+
+.categoryFilter > ul > li {
+    margin: 0px 10px;
+    padding: 4px 8px;
+    outline: 1px solid grey;
+    color: var(--hard-green);
+    border-radius: 4px;
+    font-size: small;
+    font-weight: 600;
+    width: fit-content;
+    text-wrap: nowrap;
+}
+
+.categoryFilter > ul > li:hover{
+    background-color: var(--hard-green);
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.selCat{
+    background-color: var(--hard-green);
+    color: whitesmoke!important;
+    cursor: pointer;
+}
+
+@media screen and (min-width : 300px) and (max-width : 800px){
+    .funnelIcon{
+        width: calc(25% - 10px);
+    }
+
+    .categoryFilter > ul{
+        width: calc(75% - 10px);
+    }
+
+}

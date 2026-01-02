@@ -1,0 +1,21 @@
+.aboutDesc{
+    width: 100%;
+    min-height: 50px;
+    float: left;
+}
+
+.aboutDescInner{
+    max-width: 1240px;
+    min-height: 40px;
+    margin: 30px auto;
+    border: 5px double #273524;
+}
+
+.aboutDescInner > p {
+    padding: 5px 10px;
+    text-align: justify;
+    hyphens: auto;
+    float: none;
+    /* mix-blend-mode: multiply; */
+    /* background-blend-mode: difference; */
+}

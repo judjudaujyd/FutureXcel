@@ -1,0 +1,12 @@
+.blogContent{
+    width: 100%;
+    float: left;
+    min-height: 300px;
+}
+
+.blogContentInner{
+    width: 80%;
+    float: left;
+    min-height: 250px;
+    margin: 25px 10%;
+}

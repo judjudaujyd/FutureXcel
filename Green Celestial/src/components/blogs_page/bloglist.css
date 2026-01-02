@@ -1,0 +1,55 @@
+.blogListPage {
+  width: 100%;
+  float: left;
+  height: auto;
+  margin-top: 15px;
+}
+
+.blogListPageInner {
+  width: calc(100% - 10px);
+  margin: 0px 5px;
+}
+
+.blogListPageContainer {
+  max-width: 1240px;
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 15px;
+}
+
+/* ================= PAGINATION ================= */
+
+.pagination {
+  width: 100%;
+  max-width: 1240px;
+  margin: 30px auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.pagination button {
+  padding: 8px 18px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination span {
+  font-size: 14px;
+  color: #555;
+}

@@ -1,0 +1,26 @@
+.service_card{
+    width: 200px;
+    height: 200px;
+    float: left;
+    border-radius: 8px;
+    background-size: cover!important;
+    background-repeat: no-repeat;
+    margin-top: 5px;
+    display: grid;
+    place-items: center;
+    
+}
+
+.service_card > b {
+    font-weight: 600;
+    color: whitesmoke;
+    text-align: center;
+    background-blend-mode: difference;
+}
+
+@media screen and (min-width:300px) and (max-width:500px){
+    .service_card{
+        width: 150px;
+        height: 150px;
+    }
+}

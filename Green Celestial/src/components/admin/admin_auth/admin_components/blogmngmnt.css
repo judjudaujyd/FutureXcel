@@ -1,0 +1,89 @@
+/* Main container with full viewport height and smooth scrolling */
+.blog_mngt {
+    width: 100%;
+    height: 90%; /* Full viewport height */
+    overflow-y: auto; /* Ensure smooth scrolling if content exceeds viewport */
+    display: flex; /* Flexbox is more efficient and easier than float for layouts */
+    justify-content: center;
+    user-select: none;
+  }
+  
+  /* Inner grid container with responsive design */
+  .blog_mngt_inner {
+    width: 90%;
+    margin: 15px auto; /* Center the grid */
+    display: grid;
+    grid-gap: 15px; /* Consistent gap between grid items */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+  }
+  
+  /* Individual card styling */
+  .blog_mngt_card {
+    height: 280px;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden; /* Ensure content stays inside the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visuals */
+  }
+  
+  .blog_mngt_card:hover {
+    transform: scale(0.95); /* Smooth scale on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  }
+  
+  /* Styling for the heading inside the card */
+  .blog_mngt_card > a > h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 280px;
+    line-height: 280px;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)); /* Dark overlay */
+    border-radius: 4px;
+  }
+  
+  /* Styling for the image inside the card */
+  .blog_mngt_card > a > img {
+    position: absolute;
+    width: 100%;
+    height: 100%; /* Ensure the image fills the entire card */
+    object-fit: cover; /* Crop and fit the image proportionally */
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 4px;
+    transition: opacity 0.3s ease; /* Fade in effect for images */
+  }
+  
+  /* Improve performance on hover by using 'will-change' */
+  .blog_mngt_card {
+    will-change: transform, box-shadow; /* Inform browser about the upcoming changes */
+  }
+  
+  .loading-skeleton {
+    width: 100%;
+    height: 280px; /* Match the size of the images */
+    background-color: #e0e0e0; /* Light gray background */
+    border-radius: 4px; /* Match the card style */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #666; /* Gray text color */
+  }
+  
+  .error-message {
+    color: red; /* Red color for error messages */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px; /* Add some margin */
+  }
+  

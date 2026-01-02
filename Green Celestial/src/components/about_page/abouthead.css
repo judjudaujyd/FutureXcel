@@ -1,0 +1,15 @@
+.about_head{
+    width: 100%;
+    height: 340px;
+    background: linear-gradient(to bottom , #1e2d1a,#1c2a183c),url("/aboutUs/header.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    place-items: center;
+}
+
+.about_head > h1 {
+    color: whitesmoke;
+    font-weight: 900;
+}
