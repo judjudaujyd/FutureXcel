@@ -10,6 +10,8 @@ import compression from "compression";
 
 const PORT = process.env.PORT || 8000;
 const DB_URL = process.env.URL || 'mongodb://localhost:27017/greencelestial';
+// Backend URL used in policies (set this in production to your deployed backend URL)
+const BACKEND_URL = process.env.BACKEND_URL || `http://localhost:${PORT}`;
 
 connectToDb(DB_URL);
 
@@ -22,7 +24,7 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-            "img-src": ["'self'", "data:", "https://images.unsplash.com", "https://via.placeholder.com", "http://localhost:8000"],
+            "img-src": ["'self'", "data:", "https://images.unsplash.com", "https://via.placeholder.com", BACKEND_URL],
         },
     },
 })); // Set security headers

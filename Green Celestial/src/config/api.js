@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
 
 export const getImageUrl = (imagePath) => {
     if (!imagePath) return "https://via.placeholder.com/400x300?text=No+Image";
@@ -16,7 +16,8 @@ export const getImageUrl = (imagePath) => {
         normalizedPath = `/uploads${normalizedPath}`;
     }
 
-    return normalizedPath;
+    // Prefix with API base URL so callers get a full URL
+    return `${API_BASE_URL}${normalizedPath}`;
 };
 
 export default API_BASE_URL;

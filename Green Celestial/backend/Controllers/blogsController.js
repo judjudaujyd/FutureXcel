@@ -1,5 +1,4 @@
 import blogModel from "../Models/blogsSchema.js";
-import trafficModel from "../Models/trafficSchema.js";
 
 // ============= FETCH BLOGS WITH PAGINATION & FILTERING =================
 // controllers/blogsController.js

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import API_BASE_URL from "../../../../config/api";
 import "./traffic.css";
 import TotalTraffic from "./traffic_components/TotalTraffic";
 import DeviceTypes from "./traffic_components/DeviceTypes";
@@ -54,7 +55,7 @@ const Traffic = () => {
     };
 
     try {
-      const request = await fetch("http://localhost:8000/traffic", reqOpts);
+      const request = await fetch(`${API_BASE_URL}/traffic`, reqOpts);
       if (request.ok) {
         const traficData = await request.json();
         setTraffic(traficData.msg);
@@ -68,7 +69,7 @@ const Traffic = () => {
 
   const getTrafficStats = async () => {
     try {
-      const response = await fetch("http://localhost:8000/traffic/stats");
+      const response = await fetch(`${API_BASE_URL}/traffic/stats`);
       if (response.ok) {
         const data = await response.json();
         setTrafficStats(data);
