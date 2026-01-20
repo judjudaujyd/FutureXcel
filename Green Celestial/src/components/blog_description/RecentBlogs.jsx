@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import API_BASE_URL from "../../config/api";
+import { Link } from "react-router-dom";
 import "./recentblogs.css";
 
 const RecentBlogs = () => {
@@ -6,11 +8,13 @@ const RecentBlogs = () => {
 
   // ====================GET RECENT BLOGS TO DISPLAY============================
   const getRecentBlogs = async () => {
-    const response = await fetch("http://localhost:8000/blogs/recentBlogs")
-      .then((res) => res)
-      .catch((error) => console.log("An Error Occured"));
-    let data = await response.json();
-    setRecent(data);
+    try {
+      const response = await fetch(`${API_BASE_URL}/blogs/recentBlogs`);
+      let data = await response.json();
+      setRecent(data);
+    } catch (error) {
+      // Error fetching recent blogs
+    }
   };
 
   // ===============TRIGGER FOR FETCHING DATA ONLOAD=======================
@@ -46,21 +50,19 @@ const RecentBlogs = () => {
       <div className="recentBlogs">
         <div className="recentBlogsInner">
           {/* Header */}
-          <div className="recentBlogTitle">
-            <h2>Recent Blogs</h2>
-          </div>
+
           {/* Cards Container */}
           <div className="recentBlogsContent">
             {/* Cards */}
             {recent.map((temp) => (
-              <>
-                <div className="recentBlogsCard">
+              <div key={temp._id} className="recentBlogsCard">
+                <Link to={`/blog/${temp._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <small>POSTED ON {UTCToNormal(temp.date)}</small>
                   <h2>{temp.title}</h2>
                   <p>{stripContent(temp.content)}</p>
                   <b>Category : {temp.category}</b>
-                </div>
-              </>
+                </Link>
+              </div>
             ))}
           </div>
         </div>

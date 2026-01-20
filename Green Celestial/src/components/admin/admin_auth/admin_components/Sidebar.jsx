@@ -1,62 +1,93 @@
 import React from "react";
 import "./sidebar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const Sidebar = ({setMenu}) => {
-  const nav_btns = [
+const Sidebar = ({ setMenu, menu }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/admin");
+  };
+
+  const nav_sections = [
     {
-      title: "TRAFFIC STATISTICS",
-      path: "/dashboard/traffic",
+      title: "Overview",
+      items: [
+        { title: "Dashboard", path: "/dashboard", icon: "🏠" },
+        { title: "Analytics", path: "/dashboard/blog-stats", icon: "📊" }
+      ]
     },
     {
-      title: "BLOG MANAGMENT",
-      path: "/dashboard",
+      title: "Content",
+      items: [
+        { title: "Blog Management", path: "/dashboard/blog/manageBlogs", icon: "📝" },
+        { title: "Project Management", path: "/dashboard/project", icon: "💼" },
+        { title: "Team Management", path: "/dashboard/team", icon: "👥" }
+      ]
     },
     {
-      title: "TEAM MANAGMENT",
-      path: "/dashboard/team",
+      title: "Create",
+      items: [
+        { title: "New Blog", path: "/dashboard/blog/create", icon: "✍️" },
+        { title: "New Project", path: "/dashboard/project/add", icon: "🚀" }
+      ]
     },
     {
-      title: "PROJECT MANAGMENT",
-      path: "/dashboard/project",
-    },
-    {
-      title: "ACCOUNT MANAGMENT",
-      path: "/dashboard/accounts",
-    },
-    {
-      title: "MY ACCOUNT",
-      path: "/dashboard/account",
-    },
+      title: "Settings",
+      items: [
+        { title: "My Account", path: "/dashboard/account", icon: "👤" },
+        { title: "Account Management", path: "/dashboard/accounts", icon: "⚙️" },
+        { title: "Traffic Stats", path: "/dashboard/traffic", icon: "📈" }
+      ]
+    }
   ];
 
   return (
-    <>
-      <div className="admin_left" >
-        <nav className="admin_nav">
-          <div className="nav_top">
-            <h2>
-              <img src="/admin/tool.svg" loading="lazy" />
-              Admin Panel
-            </h2>
-          </div>
-          <div className="nav_btm">
+    <div className="admin_sidebar">
+      <div className="sidebar_header">
+        <div className="brand_logo">🌿</div>
+        <h2>Green Celestial</h2>
+        <p>Admin Dashboard</p>
+      </div>
+
+      <nav className="sidebar_nav">
+        {nav_sections.map((section, idx) => (
+          <div key={idx} className="nav_section">
+            <h3 className="section_title">{section.title}</h3>
             <ul>
-              {nav_btns.map((val, index) => {
-                return (
-                  <li key={index} onClick={() => setMenu(false)}>
-                    <Link to={val.path}>{val.title}</Link>
-                  </li>
-                );
-              })}
-              <li onClick={() => setMenu(false)} className="close_menu">
-                <img src="/admin/close.svg" loading="lazy" />
-              </li>
+              {section.items.map((item, index) => (
+                <li key={index} onClick={() => {
+                  if (window.innerWidth < 968) {
+                    setMenu(false);
+                  }
+                }}>
+                  <Link
+                    to={item.path}
+                    className={location.pathname === item.path ? "active" : ""}
+                  >
+                    <span className="nav_icon">{item.icon}</span>
+                    <span className="nav_text">{item.title}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-        </nav>
+        ))}
+      </nav>
+
+      <div className="sidebar_footer">
+        <button className="logout_btn" onClick={handleLogout}>
+          <span className="nav_icon">🚪</span>
+          <span className="nav_text">Logout</span>
+        </button>
       </div>
-    </>
+
+      <button className="close_sidebar_btn" onClick={() => setMenu(false)}>
+        ✕
+      </button>
+    </div>
   );
 };
 

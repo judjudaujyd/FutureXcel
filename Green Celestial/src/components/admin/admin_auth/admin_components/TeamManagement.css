@@ -1,0 +1,297 @@
+.team_management_container {
+    width: 100%;
+}
+
+.team_management_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.team_management_header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1c2a18;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.5px;
+}
+
+.team_management_header p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+.add_member_btn {
+    padding: 0.875rem 1.75rem;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+}
+
+.add_member_btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(231, 76, 60, 0.3);
+}
+
+/* Add Member Form */
+.add_member_form_card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.add_member_form_card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1c2a18;
+    margin: 0 0 1.5rem 0;
+}
+
+.member_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form_group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.form_group input,
+.form_group textarea {
+    padding: 0.875rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form_group input:focus,
+.form_group textarea:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.form_group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit_member_btn {
+    padding: 1rem 2rem;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.submit_member_btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* Loading & Empty States */
+.loading_state {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.empty_state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.empty_icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.empty_state h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1c2a18;
+    margin: 0 0 0.5rem 0;
+}
+
+.empty_state p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0 0 1.5rem 0;
+}
+
+.empty_cta_btn {
+    padding: 0.875rem 2rem;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.empty_cta_btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* Section Title */
+.section_title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1c2a18;
+    margin: 0 0 1.5rem 0;
+}
+
+/* Team Grid */
+.team_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.team_member_card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.team_member_card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.member_image_wrapper {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: #f5f7fa;
+}
+
+.member_image_wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member_content {
+    padding: 1.5rem;
+}
+
+.member_content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1c2a18;
+    margin: 0 0 0.5rem 0;
+}
+
+.member_role {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e74c3c;
+    margin: 0 0 1rem 0;
+}
+
+.member_about {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+}
+
+.member_skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.skill_tag {
+    padding: 0.375rem 0.875rem;
+    background: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.delete_member_btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: transparent;
+    color: #e74c3c;
+    border: 2px solid #e74c3c;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete_member_btn:hover {
+    background: #e74c3c;
+    color: #fff;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .team_management_header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add_member_btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .form_row {
+        grid-template-columns: 1fr;
+    }
+
+    .team_grid {
+        grid-template-columns: 1fr;
+    }
+}

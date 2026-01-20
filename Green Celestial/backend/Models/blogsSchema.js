@@ -1,45 +1,51 @@
 import mongoose from "mongoose";
 
 const blogSchema = mongoose.Schema({
-    admin :{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "admins"
+    admin: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "admins"
     },
-    author : {
-        type : String,
-        required : true
+    author: {
+        type: String,
+        required: true
     },
-    title : {
-        type : String,
-        required : true,
+    title: {
+        type: String,
+        required: true,
     },
-    img : {
-        type : String,
-        required : true
+    img: {
+        type: String,
+        required: true
     },
-    content : {
-        type : String,
-        required : true
+    content: {
+        type: String,
+        required: true
     },
-    meta_keywords : {
-        type : String
+    meta_keywords: {
+        type: String
     },
-    meta_desc : {
-        type : String
+    meta_desc: {
+        type: String
     },
-    category : {
-        type : String
+    category: {
+        type: String,
+        index: true // Index for filtering by category
     },
-    date : {
-        type : Date,
-        default : Date.now()
+    date: {
+        type: Date,
+        default: Date.now(),
+        index: true // Index for sorting by date
     },
-    comments : [
+    comments: [
         {
-            type : String
+            type: String
         }
-    ]
+    ],
+    views: {
+        type: Number,
+        default: 0
+    }
 })
 
-const blogModel = mongoose.model("blogs",blogSchema);
+const blogModel = mongoose.model("blogs", blogSchema);
 export default blogModel;

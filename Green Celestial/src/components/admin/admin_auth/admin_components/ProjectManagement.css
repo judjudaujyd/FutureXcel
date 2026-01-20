@@ -1,0 +1,324 @@
+.project_management_container {
+    width: 100%;
+}
+
+.project_management_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.project_management_header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1c2a18;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.5px;
+}
+
+.project_management_header p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+.add_project_btn {
+    padding: 0.875rem 1.75rem;
+    background: #9b59b6;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(155, 89, 182, 0.2);
+}
+
+.add_project_btn:hover {
+    background: #8e44ad;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(155, 89, 182, 0.3);
+}
+
+/* Loading & Empty States */
+.loading_state {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.empty_state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.empty_icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.empty_state h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1c2a18;
+    margin: 0 0 0.5rem 0;
+}
+
+.empty_state p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0 0 1.5rem 0;
+}
+
+.empty_cta_btn {
+    padding: 0.875rem 2rem;
+    background: #9b59b6;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.empty_cta_btn:hover {
+    background: #8e44ad;
+    transform: translateY(-2px);
+}
+
+/* Projects Grid */
+.projects_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.project_card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.project_card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.project_image_wrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: #f5f7fa;
+}
+
+.project_image_wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project_card:hover .project_image_wrapper img {
+    transform: scale(1.05);
+}
+
+.project_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.project_card:hover .project_overlay {
+    opacity: 1;
+}
+
+.delete_project_btn {
+    padding: 0.75rem 1.5rem;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete_project_btn:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+.project_content {
+    padding: 1.5rem;
+}
+
+.project_content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1c2a18;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+}
+
+.project_description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+}
+
+.project_meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+    gap: 0.5rem;
+}
+
+.project_stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.project_category {
+    padding: 0.25rem 0.6rem;
+    background: rgba(155, 89, 182, 0.1);
+    color: #9b59b6;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.project_price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #27ae60;
+}
+
+.delete_project_btn_small {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: #e74c3c;
+    border: 1.5px solid #ffeded;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+}
+
+.delete_project_btn_small:hover {
+    background: #e74c3c;
+    color: #fff;
+    border-color: #e74c3c;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.2);
+}
+
+.delete_confirmation_actions {
+    display: flex;
+    gap: 0.5rem;
+    animation: fadeIn 0.2s ease;
+}
+
+.confirm_delete_btn {
+    padding: 0.5rem 0.75rem;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.confirm_delete_btn:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+.cancel_delete_btn {
+    padding: 0.5rem 0.75rem;
+    background: #f5f7fa;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cancel_delete_btn:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .project_management_header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add_project_btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .projects_grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Legacy support */
+.pm-container {
+    width: 100%;
+}

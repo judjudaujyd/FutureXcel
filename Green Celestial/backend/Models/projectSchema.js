@@ -13,12 +13,22 @@ const projectSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    f_image : {
+    image : { // Changed from f_image to image for clarity, or kept as alias if needed. sticking to image as per plan
         type : String,
         required : true
     },
+    category: {
+        type: String,
+        required: true,
+        index: true // Index for filtering
+    },
+    price: {
+        type: Number,
+        required: true
+    },
     date : {
-        default : Date.now()
+        type: Date,
+        default : Date.now
     }
 });
 

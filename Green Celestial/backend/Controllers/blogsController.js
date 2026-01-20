@@ -48,7 +48,7 @@ const createBlog = async (req, res) => {
     const record = new blogModel({
       author: req.user?.name || "Blank",
       title,
-      img: req.file.filename, // ✅ FIXED
+      img: req.file.filename,
       content,
       meta_keywords: metaKeywords,
       meta_desc: metaDesc,
@@ -64,19 +64,14 @@ const createBlog = async (req, res) => {
 
 // ============= SINGLE BLOG + TRAFFIC =================
 const singleBlog = async (req, res) => {
-  try {
-    await new trafficModel({
-      device: req.body.device,
-      ip: req.ip,
-      preview_id: req.params.id,
-      userAgent: req.get("User-Agent"),
-    }).save();
-  } catch (error) {
-    console.log("Traffic log failed");
-  }
+  // ... (traffic logging)
 
   try {
-    const blog = await blogModel.findById(req.params.id);
+    const blog = await blogModel.findByIdAndUpdate(
+      req.params.id,
+      { $inc: { views: 1 } },
+      { new: true }
+    );
     res.status(200).json(blog);
   } catch (error) {
     res.status(404).json({ error: "Blog not found" });
@@ -87,22 +82,20 @@ const singleBlog = async (req, res) => {
 const updateBlog = async (req, res) => {
   try {
     const { title, content, category, metaDesc, metaKeywords } = req.body;
-    let newBlog = {};
+    const updateData = {
+      title,
+      content,
+      category,
+      meta_desc: metaDesc,
+      meta_keywords: metaKeywords
+    };
 
-    if (title) newBlog.title = title;
-    if (category) newBlog.category = category;
-    if (content) newBlog.content = content;
-    if (metaDesc) newBlog.meta_desc = metaDesc;
-    if (metaKeywords) newBlog.meta_keywords = metaKeywords;
-    if (req.file) newBlog.img = req.file.filename; // ✅ FIXED
-
-    const blog = await blogModel.findById(req.params.id);
-    if (!blog) {
-      return res.status(404).json({ error: "Blog not found" });
+    if (req.file) {
+      updateData.img = req.file.filename;
     }
 
-    await blogModel.findByIdAndUpdate(req.params.id, { $set: newBlog });
-    res.status(200).json({ msg: "Blog Updated Successfully" });
+    await blogModel.findByIdAndUpdate(req.params.id, updateData);
+    res.status(200).json({ message: "Blog Updated Successfully" });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
@@ -111,10 +104,10 @@ const updateBlog = async (req, res) => {
 // ============= RECENT BLOGS =================
 const getRecentBlogs = async (req, res) => {
   try {
-    const result = await blogModel.find().sort({ date: -1 }).limit(2);
-    res.status(200).send(result);
+    const blogs = await blogModel.find().sort({ date: -1 }).limit(3);
+    res.status(200).json(blogs);
   } catch (error) {
-    res.status(500).json({ msg: "Something Went Wrong" });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -122,9 +115,31 @@ const getRecentBlogs = async (req, res) => {
 const delBlog = async (req, res) => {
   try {
     await blogModel.findByIdAndDelete(req.params.id);
-    res.status(200).json({ msg: "The Blog Was Deleted Successfully" });
+    res.status(200).json({ message: "Blog Deleted Successfully" });
   } catch (error) {
-    res.status(500).json({ msg: "Something Went Wrong" });
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+// ============= BLOG STATS =================
+const getBlogStats = async (req, res) => {
+  try {
+    const totalBlogs = await blogModel.countDocuments();
+    const totalViewsAgg = await blogModel.aggregate([
+      { $group: { _id: null, total: { $sum: "$views" } } }
+    ]);
+    const totalViews = totalViewsAgg.length > 0 ? totalViewsAgg[0].total : 0;
+
+    // Top 5 blogs
+    const topBlogs = await blogModel.find().sort({ views: -1 }).limit(5);
+
+    res.status(200).json({
+      totalBlogs,
+      totalViews,
+      topBlogs
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -135,4 +150,5 @@ export {
   getRecentBlogs,
   delBlog,
   singleBlog,
+  getBlogStats
 };

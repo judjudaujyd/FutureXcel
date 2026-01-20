@@ -7,6 +7,7 @@ import {
   updateBlog,
   getBlogs,
   singleBlog,
+  getBlogStats
 } from "../Controllers/blogsController.js";
 import { authenticate } from "../middleware/auth.js";
 import multer from "multer";
@@ -17,7 +18,7 @@ const blogRouter = express.Router();
 // =================== MULTER CONFIG ===================
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(process.cwd(), "uploads"));
+    cb(null, path.join(path.resolve(), "uploads"));
   },
   filename: (req, file, cb) => {
     const uniqueName =
@@ -45,6 +46,7 @@ const upload = multer({ storage, fileFilter });
 blogRouter.get("/", getBlogs);
 blogRouter.get("/one/:id", singleBlog);
 blogRouter.get("/recentBlogs", getRecentBlogs);
+blogRouter.get("/stats", getBlogStats); // Added /stats route
 
 // Create Blog
 blogRouter.post(

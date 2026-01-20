@@ -1,34 +1,67 @@
-.dashboard{
+/* Modern Dashboard Layout */
+.dashboard {
+    display: flex;
     width: 100%;
+    min-height: 100vh;
+    background: #f5f7fa;
+    overflow-x: hidden;
+}
+
+/* Sidebar Wrapper (Left) */
+.dashboard_left {
+    width: 280px;
+    flex-shrink: 0;
     height: 100vh;
-    float: left;
-    position: relative;
-}
-
-.dashboard_left{
-    width: 30%;
-    height: 100%;
-    float: left;
-    position: absolute;
+    position: fixed;
+    left: 0;
     top: 0;
-    z-index: 5;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
 }
 
-.dashboard_right{
-    width: 70%;
-    height: 100%;
-    float: left;
-    position: absolute;
-    top: 0;
-    right: 0;
+.dashboard_left.active {
+    transform: translateX(0);
 }
 
-@media screen and (min-width:300px) and (max-width : 800px){
-    .dashboard_left{
-        width: 80%;
+/* Content Area (Right) */
+.dashboard_right {
+    flex: 1;
+    margin-left: 0;
+    min-height: 100vh;
+    background: #f5f7fa;
+    transition: margin-left 0.3s ease;
+}
+
+.dashboard_right.active {
+    margin-left: 280px;
+}
+
+.dashboard_content {
+    padding: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 968px) {
+    .dashboard_left {
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
     }
 
-    .dashboard_right{
+    /* On mobile, content margin shouldn't change even if sidebar is active */
+    .dashboard_right.active {
+        margin-left: 0;
         width: 100%;
+    }
+
+    .dashboard_content {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .dashboard_content {
+        padding: 1rem;
     }
 }

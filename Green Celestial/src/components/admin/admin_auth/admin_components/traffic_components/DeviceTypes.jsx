@@ -6,7 +6,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DeviceTypes = ({ traffic }) => {
-    console.log("traffic : ",traffic);
+
 
   const data = {
     labels: Object.keys(traffic),

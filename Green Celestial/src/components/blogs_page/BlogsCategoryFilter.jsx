@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import API_BASE_URL from "../../config/api";
 import blogPageData from "../../../Pages/zustand/Blog_page";
 import "./blogcategoryfilter.css";
 
@@ -10,7 +11,7 @@ const BlogsCategoryFilter = () => {
   // Fetch categories from backend
   const getCategories = async () => {
     try {
-      const res = await fetch("http://localhost:8000/category");
+      const res = await fetch(`${API_BASE_URL}/category`);
       if (res.ok) {
         const data = await res.json();
         setCategories(data);

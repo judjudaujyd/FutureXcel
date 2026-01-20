@@ -1,22 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root{
-    --background : whitesmoke;
-    --hard-green : #1c2a18;
-    --s-green : #006600;
-    --hard-blue : #6eea8e;
-    /* --hard-blue : blue; */
+:root {
+  --background: whitesmoke;
+  --text-main: #333;
+  --primary-dark: #1c2a18;
+  /* Reverted to hard-green */
+  --brand-green: #006600;
+  /* Reverted to s-green */
+  --brand-blue: #6eea8e;
+  /* Reverted to hard-blue */
+
+  /* Legacy mapping kept for compatibility */
+  --hard-green: #1c2a18;
+  --s-green: #006600;
+  --hard-blue: #6eea8e;
 }
 
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    /* outline: 1px solid black; */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* outline: 1px solid black; */
 }
 
-body{
-    overflow-x: hidden;
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
 }
 
 /* ===== Thin Scrollbar (Global) ===== */

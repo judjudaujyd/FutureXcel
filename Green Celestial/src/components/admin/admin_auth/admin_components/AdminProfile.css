@@ -1,0 +1,262 @@
+.admin_profile_container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.profile_header {
+    margin-bottom: 2rem;
+}
+
+.profile_header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1c2a18;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.5px;
+}
+
+.profile_header p {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+.profile_content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Profile Card */
+.profile_card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    gap: 2rem;
+}
+
+.profile_avatar_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile_avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+}
+
+.avatar_icon {
+    font-size: 2.5rem;
+}
+
+.change_avatar_btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: #9b59b6;
+    border: 2px solid #9b59b6;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.change_avatar_btn:hover {
+    background: #9b59b6;
+    color: #fff;
+}
+
+.profile_info_section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info_group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.info_group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info_value {
+    font-size: 1.1rem;
+    color: #1c2a18;
+    font-weight: 600;
+}
+
+.info_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.role_badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Account Actions Card */
+.account_actions_card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.account_actions_card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1c2a18;
+    margin: 0 0 1.5rem 0;
+}
+
+.action_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.action_btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: #f5f7fa;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.action_btn:hover {
+    background: #fff;
+    border-color: #e0e0e0;
+    transform: translateX(4px);
+}
+
+.btn_icon {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+}
+
+.action_btn strong {
+    display: block;
+    font-size: 1rem;
+    color: #1c2a18;
+    margin-bottom: 0.25rem;
+}
+
+.action_btn p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+}
+
+.logout_btn:hover {
+    border-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.05);
+}
+
+/* Security Info Card */
+.security_info_card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.security_info_card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1c2a18;
+    margin: 0 0 1.5rem 0;
+}
+
+.security_items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.security_item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f5f7fa;
+    border-radius: 10px;
+}
+
+.security_icon {
+    width: 32px;
+    height: 32px;
+    background: #27ae60;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.security_item strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #1c2a18;
+    margin-bottom: 0.25rem;
+}
+
+.security_item p {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .profile_card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile_info_section {
+        width: 100%;
+    }
+
+    .info_row {
+        grid-template-columns: 1fr;
+    }
+
+    .action_btn {
+        flex-direction: column;
+        text-align: center;
+    }
+}

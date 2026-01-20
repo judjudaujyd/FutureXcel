@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import blogPageData from "../../../Pages/zustand/Blog_page";
 import "./bloglist.css";
 import BlogCard from "./sub_components/BlogCard";
+import API_BASE_URL from "../../config/api";
 
 const BlogList = () => {
   const setBlogsData = blogPageData((data) => data.setBlogs);
@@ -14,7 +15,7 @@ const BlogList = () => {
 
   const getBlogs = async () => {
     try {
-      const url = new URL("http://localhost:8000/blogs");
+      const url = new URL(`${API_BASE_URL}/blogs`);
       url.searchParams.append("page", page);
       url.searchParams.append("limit", 6);
       if (activeCategory) url.searchParams.append("category", activeCategory);
@@ -46,9 +47,13 @@ const BlogList = () => {
     <div className="blogListPage">
       <div className="blogListPageInner">
         <div className="blogListPageContainer">
-          {dataToRender.map((val) => (
-            <BlogCard data={val} key={val._id} />
-          ))}
+          {dataToRender && dataToRender.length > 0 ? (
+            dataToRender.map((val) => (
+              <BlogCard data={val} key={val._id} />
+            ))
+          ) : (
+            <p className="no_blogs_found">No blogs found matching your criteria.</p>
+          )}
         </div>
 
         <div className="pagination">

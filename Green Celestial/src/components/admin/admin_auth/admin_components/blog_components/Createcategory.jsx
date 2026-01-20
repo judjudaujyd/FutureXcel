@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_BASE_URL from '../../../../../config/api';
 import "./createcategory.css";
 import { Link } from 'react-router-dom';
 
@@ -41,7 +42,7 @@ const Createcategory = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/category", headerOpts);
+      const response = await fetch(`${API_BASE_URL}/category`, headerOpts);
       const result = await response.json();
 
       setResResult({
@@ -112,7 +113,7 @@ const Createcategory = () => {
             <button type='submit'>CREATE</button>
             <Link to={"/dashboard/blog/create"} className='back_btn'>Go Back ?</Link>
           </form>
-          
+
         </div>
       </div>
     </>

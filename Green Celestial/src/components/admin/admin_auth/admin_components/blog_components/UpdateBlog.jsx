@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import API_BASE_URL from '../../../../../config/api';
 import "./createblog.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -21,7 +22,7 @@ const UpdateBlog = () => {
 
   const setBlogOld = async () => {
     try {
-      let res = await fetch(`http://localhost:8000/blogs/one/${id}`);
+      let res = await fetch(`${API_BASE_URL}/blogs/one/${id}`);
       if (res.ok) {
         let result = await res.json();
         setFormData(prevFormData => ({
@@ -43,19 +44,19 @@ const UpdateBlog = () => {
   const getCategories = async () => {
 
     const catReqOpts = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("authToken"),
-        },
-      };
-    
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("authToken"),
+      },
+    };
+
     try {
-      const res = await fetch("http://localhost:8000/category", catReqOpts);
+      const res = await fetch(`${API_BASE_URL}/category`, catReqOpts);
       const catResponse = await res.json();
       setCategories(catResponse);
     } catch (error) {
-      console.log(error);
+      // Error fetching categories
     }
   };
 
@@ -75,7 +76,7 @@ const UpdateBlog = () => {
       });
     }
 
-    console.log(formData);
+
   };
 
   const handleContentChange = (event, editor) => {
@@ -104,7 +105,7 @@ const UpdateBlog = () => {
 
     // Send POST request to backend
     try {
-      const response = await fetch(`http://localhost:8000/blogs/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/blogs/${id}`, {
         method: "PUT",
         headers: {
           // 'auth-token': localStorage.getItem('authToken'), // Do not set Content-Type
@@ -114,7 +115,7 @@ const UpdateBlog = () => {
       });
 
       if (response.ok) {
-        console.log("Blog created successfully!");
+        // Blog updated successfully
         // Optionally reset form or redirect to another page
         // Reset form state
         setFormData({
@@ -132,7 +133,7 @@ const UpdateBlog = () => {
         console.error("Failed to create blog", errorResponse.errors);
         alert(
           "Error creating blog: " +
-            errorResponse.errors.map((err) => err.msg).join(", ")
+          errorResponse.errors.map((err) => err.msg).join(", ")
         );
       }
     } catch (error) {
@@ -144,7 +145,7 @@ const UpdateBlog = () => {
 
   // const handlePageLoad = async() => {
   //   if(id){
-      
+
   //     await setBlogOld();
   //     await getCategories();
   //   }
@@ -152,14 +153,14 @@ const UpdateBlog = () => {
 
   useEffect(() => {
     // handlePageLoad();
-    if(categories.length == 0){
+    if (categories.length == 0) {
       getCategories();
     }
-    
-    
+
+
     setBlogOld();
-    
-  },[categories]);
+
+  }, [categories]);
 
   return (
     <div className="createBlog">

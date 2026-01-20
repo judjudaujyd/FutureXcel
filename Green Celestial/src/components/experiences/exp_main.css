@@ -1,41 +1,295 @@
-
-@keyframes fade_in{
-    0%{
-        opacity: 0;
-    }
-    50%{
-        opacity: 0.5;
-    }
-    100%{
-        opacity: 1;
-    }
-}
-
-*{
-    animation: fade_in 1s ease-in;
-}
-.exp_main{
+/* Base Styles using Scoped Container */
+.exp_main {
     width: 100%;
-    float: left;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    /* Standardized font */
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.exp_main * {
+    box-sizing: border-box;
+}
+
+/* Vision Hero Section */
+.exp_main .vision_hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 4rem;
+}
+
+.exp_main .vision_content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -2px;
+}
+
+.exp_main .vision_content p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* Section Containers */
+.exp_main .section_container {
+    max-width: 1200px;
+    margin: 0 auto 5rem;
+    padding: 0 2rem;
+}
+
+.exp_main .section_title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.exp_main .section_title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #27ae60;
+    border-radius: 2px;
+}
+
+/* Projects Grid */
+.exp_main .projects_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.exp_main .project_card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.exp_main .project_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.exp_main .project_img_wrapper {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.exp_main .project_img_wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.exp_main .project_card:hover .project_img_wrapper img {
+    transform: scale(1.05);
+}
+
+.exp_main .project_info {
+    padding: 1.5rem;
+}
+
+.exp_main .project_info h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.4rem;
+}
+
+/* Renamed and specific styling for category */
+.exp_main .exp_project_category {
+    display: inline-block !important;
+    padding: 0.35rem 1rem;
+    background: #e8f6ef;
+    color: #27ae60;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    float: none !important;
+    line-height: normal !important;
+    margin-top: 5px;
+    text-decoration: none !important;
+    width: auto !important;
+}
+
+/* Team Grid */
+.exp_main .team_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    padding: 1rem;
+}
+
+.exp_main .team_card_premium {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.exp_main .team_card_premium:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.exp_main .member_img {
     height: 350px;
-    display: grid;
-    place-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.exp_main_title{
-    width: 70%;
-    height: 300px;
-    display: grid;
-    place-items: center;
+.exp_main .member_img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+    opacity: 0.6;
 }
 
-.exp_main_title > h2 {
-    background-color: transparent;
-    font-size: 3rem;
-    letter-spacing: 0.5vw;
-    word-spacing: 1vw;
-    color: transparent;
-    background: url(/forest.jpg);
-    -webkit-background-clip: text;
-    animation: floater 5s linear infinite;
+.exp_main .member_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.exp_main .team_card_premium:hover .member_img img {
+    transform: scale(1.1);
+}
+
+.exp_main .member_info {
+    padding: 2rem;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.exp_main .member_info h3 {
+    margin: 0;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.exp_main .member_role {
+    color: var(--brand-green, #006600);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin: 0.5rem 0 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.exp_main .member_role::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: #e1e1e1;
+}
+
+.exp_main .member_about {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.exp_main .member_skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: auto;
+    /* Pushes to bottom */
+}
+
+.exp_main .skill_tag {
+    background: #f8f9fa;
+    color: #444;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border: 1px solid #eee;
+    transition: all 0.2s;
+}
+
+.exp_main .team_card_premium:hover .skill_tag {
+    background: #2c3e50;
+    color: #fff;
+    border-color: #2c3e50;
+}
+
+/* No Data */
+.exp_main .no_data {
+    text-align: center;
+    color: #999;
+    font-size: 1.2rem;
+    grid-column: 1 / -1;
+    padding: 3rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 2px dashed #eee;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.exp_main .project_card,
+.exp_main .team_card_premium {
+    animation: fadeIn 0.6s ease-out forwards;
 }

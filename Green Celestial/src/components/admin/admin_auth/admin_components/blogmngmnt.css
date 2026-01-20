@@ -1,89 +1,266 @@
-/* Main container with full viewport height and smooth scrolling */
-.blog_mngt {
-    width: 100%;
-    height: 90%; /* Full viewport height */
-    overflow-y: auto; /* Ensure smooth scrolling if content exceeds viewport */
-    display: flex; /* Flexbox is more efficient and easier than float for layouts */
-    justify-content: center;
-    user-select: none;
+.dashboard_home {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard_header {
+  margin-bottom: 2.5rem;
+}
+
+.dashboard_header h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1c2a18;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -1px;
+}
+
+.dashboard_header p {
+  font-size: 1.05rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Stats Grid */
+.stats_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat_card {
+  background: #fff;
+  padding: 1.75rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border-left: 4px solid;
+  transition: all 0.3s ease;
+}
+
+.stat_card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.stat_icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.stat_content h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1c2a18;
+  margin: 0 0 0.25rem 0;
+}
+
+.stat_content p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Section Headers */
+.section_header {
+  margin: 3rem 0 1.5rem 0;
+}
+
+.section_header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1c2a18;
+  margin: 0 0 0.25rem 0;
+}
+
+.section_header p {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Quick Actions Grid */
+.quick_actions_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.quick_action_card {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quick_action_card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.action_icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.quick_action_card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1c2a18;
+  margin: 0;
+}
+
+/* Management Grid */
+.management_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.management_card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.management_card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.management_card:hover::before {
+  transform: scaleX(1);
+}
+
+.management_card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.card_header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card_icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.management_card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1c2a18;
+  margin: 0;
+}
+
+.management_card p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.card_arrow {
+  font-size: 1.5rem;
+  color: #27ae60;
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.management_card:hover .card_arrow {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .dashboard_home {
+    padding: 1.5rem;
   }
-  
-  /* Inner grid container with responsive design */
-  .blog_mngt_inner {
-    width: 90%;
-    margin: 15px auto; /* Center the grid */
-    display: grid;
-    grid-gap: 15px; /* Consistent gap between grid items */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+
+  .dashboard_header h1 {
+    font-size: 1.75rem;
   }
-  
-  /* Individual card styling */
-  .blog_mngt_card {
-    height: 280px;
-    border-radius: 4px;
-    display: grid;
-    place-items: center;
-    position: relative;
-    overflow: hidden; /* Ensure content stays inside the card */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visuals */
+
+  .stats_grid {
+    grid-template-columns: 1fr;
   }
-  
-  .blog_mngt_card:hover {
-    transform: scale(0.95); /* Smooth scale on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+
+  .quick_actions_grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  /* Styling for the heading inside the card */
-  .blog_mngt_card > a > h3 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 280px;
-    line-height: 280px;
-    text-align: center;
-    color: white;
-    font-weight: 700;
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)); /* Dark overlay */
-    border-radius: 4px;
+
+  .management_grid {
+    grid-template-columns: 1fr;
   }
-  
-  /* Styling for the image inside the card */
-  .blog_mngt_card > a > img {
-    position: absolute;
-    width: 100%;
-    height: 100%; /* Ensure the image fills the entire card */
-    object-fit: cover; /* Crop and fit the image proportionally */
-    top: 0;
-    left: 0;
-    z-index: 1;
-    border-radius: 4px;
-    transition: opacity 0.3s ease; /* Fade in effect for images */
+}
+
+@media screen and (max-width: 500px) {
+  .dashboard_home {
+    padding: 1rem;
   }
-  
-  /* Improve performance on hover by using 'will-change' */
-  .blog_mngt_card {
-    will-change: transform, box-shadow; /* Inform browser about the upcoming changes */
+
+  .quick_actions_grid {
+    grid-template-columns: 1fr;
   }
-  
-  .loading-skeleton {
-    width: 100%;
-    height: 280px; /* Match the size of the images */
-    background-color: #e0e0e0; /* Light gray background */
-    border-radius: 4px; /* Match the card style */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: #666; /* Gray text color */
+
+  .stat_card {
+    padding: 1.25rem;
   }
-  
-  .error-message {
-    color: red; /* Red color for error messages */
-    font-weight: bold;
-    text-align: center;
-    margin-top: 10px; /* Add some margin */
+
+  .stat_icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
   }
-  
+
+  .stat_content h3 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
-import "./blog_card.css";
 import { Link } from "react-router-dom";
+import "./blog_card.css";
+import { getImageUrl } from "../../../config/api";
 
 const BlogCard = ({ data }) => {
   const stripHtml = (html) => {
@@ -12,14 +13,14 @@ const BlogCard = ({ data }) => {
   };
 
   const stripDate = (val) => {
-    let nDate = val.substr(0,10);
+    let nDate = val.substr(0, 10);
     return nDate;
   }
 
   return (
     <>
       <div className="blogCardMain">
-        <img src={`../../../../backend/uploads/${data.img}`} alt="" />
+        <img src={getImageUrl(data.img)} alt="" />
         <div className="blogCardInner">
           <small>{data.author}</small>
           <h2>{data.title}</h2>

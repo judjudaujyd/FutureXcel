@@ -1,6 +1,12 @@
 import express from "express";
 import connectToDb from "./Db/dbConnect.js";
 import cors from 'cors';
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import mongoSanitize from "express-mongo-sanitize";
+import xss from "xss-clean";
+import hpp from "hpp";
+import compression from "compression";
 
 const PORT = process.env.PORT || 8000;
 const DB_URL = process.env.URL || 'mongodb://localhost:27017/greencelestial';
@@ -9,14 +15,37 @@ connectToDb(DB_URL);
 
 const app = express();
 
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "https://localhost:5173"); // update to match the domain you will make the request from
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-//   });
-app.use(cors())
+// Security Middleware
+// Security Middleware
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    contentSecurityPolicy: {
+        directives: {
+            ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+            "img-src": ["'self'", "data:", "https://images.unsplash.com", "https://via.placeholder.com", "http://localhost:8000"],
+        },
+    },
+})); // Set security headers
+app.use(cors()); // Enable CORS
 
+// Compression Middleware
+app.use(compression()); // Gzip compression for responses
 
+// Rate Limiting
+const limiter = rateLimit({
+    windowMs: 10 * 60 * 1000, // 10 minutes
+    max: 100 // limit each IP to 100 requests per windows
+});
+app.use(limiter);
+
+// Data Sanitization
+app.use(mongoSanitize()); // Prevent NoSQL Injection
+app.use(xss()); // Prevent XSS
+app.use(hpp()); // Prevent Parameter Pollution
+
+// Body Parsers (Increased limit for handling base64 images if needed, but we use multer now)
+app.use(express.json({ limit: '10kb' })); // Standardize limit
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 
 // =============Importing Routers========
@@ -26,16 +55,24 @@ import blogRouter from "./Routers/blogsRouter.js";
 import projectRouter from "./Routers/projectRouter.js";
 import categoryRouter from "./Routers/categoryRouter.js";
 import trafficRouter from "./Routers/trafficRouter.js";
+import visionRouter from "./Routers/visionRouter.js";
+import contactRouter from "./Routers/contactRouter.js";
 
-app.use("/blogs",blogRouter);
+app.use("/blogs", blogRouter);
+app.use("/team", router);
+app.use("/admin", adminRouter);
+app.use("/category", categoryRouter);
+app.use("/projects", projectRouter);
+app.use("/traffic", trafficRouter);
+app.use("/vision", visionRouter);
+app.use("/contact", contactRouter);
+import { fileURLToPath } from 'url';
+import path from "path";
 
-app.use(express.json({ limit: '50mb' })); // For JSON requests
-app.use(express.urlencoded({ extended: true, limit: '50mb' })); // For URL-encoded requests
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-app.use("/team",router);
-app.use("/admin",adminRouter);
-app.use("/category",categoryRouter);
-app.use("/projects",projectRouter);
-app.use("/traffic",trafficRouter);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.listen(PORT,() => console.log(`SERVER IS UP ON PORT ${PORT}`));
+
+app.listen(PORT, () => console.log(`SERVER IS UP ON PORT ${PORT}`));
